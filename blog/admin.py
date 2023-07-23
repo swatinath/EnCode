@@ -14,4 +14,4 @@ class BlogAdmin(SummernoteModelAdmin):
 
 admin.site.register(Blog, BlogAdmin)    
 admin.site.register(Category)
-# admin.site.register(Blog)
+
