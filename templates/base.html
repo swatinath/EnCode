@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EnCode {% block title %}{% endblock title %}</title>
+    <link rel="icon" type="image/x-icon" href="/static/image/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg bg-primary bg-opacity-50">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            
-            <h3><i class="fa-brands fa-centercode"></i> EnCode</h3>
+            <h3><link rel="icon" type="image/jpg" href="/static/image/enlogo.jpg">EnCode</h3>
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -61,8 +61,39 @@
 
     {% endblock content %}
 
-    <footer class="bg-light">
-        &copy; 2023 EnCode
+    <footer class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 text-center"><p class="text-primary">Company</p>
+            <p>About Us <br> Blog <br> Career <br> Contact Us</p>
+          </div>
+          <div class="col-md-4 text-center"><p class="text-primary">Policies</p>
+            <p>Privacy Policies <br>Terms of Use <br>Secure Posting <br>Copyright Policies</p>
+          </div>
+          <div class="col-md-4 text-center"><p class="text-primary">Help</p>
+          <p>Content <br>Management <br>Security <br> FAQ</p>
+          </div>
+        </div>
+      </div>
+      
+      <ul class="list-unstyled list-inline text-center">
+        <li class="list-inline-item">
+          <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/facebook.png" alt="Facebook" width="32px" height="32px">
+        </li>
+        <li class="list-inline-item">
+          <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/linkedin.png" alt="Linkedin" width="32px" height="32px">
+        </li>
+        <li class="list-inline-item">
+          <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/youtube.png" alt="Youtube" width="32px" height="32px">
+        </li>
+        <li class="list-inline-item">
+          <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/pinterest.png" alt="Pinterest" width="32px" height="32px">
+        </li>
+        <li class="list-inline-item">
+          <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/instagram.png" alt="Instagram" width="32px" height="32px">
+        </li>
+      </ul>
+      <p class="text-center text-secondary"> &copy; 2023 EnCode. All Rights Reserved</p>
     </footer>
     <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
     {% block extrajs %}{% endblock extrajs %}
