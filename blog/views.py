@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from blog.forms import BlogForm
-from blog.models import Blog, Category
+from blog.models import Blog, Category, Comment
 # Create your views here.
 
 def all_blogs(request):
@@ -16,8 +16,10 @@ def all_blogs(request):
 def blog_details(request, id):
     #book = Book.objects.get(id=id)
     blog = get_object_or_404(Blog, id=id)
+    feedbacks = Comment.objects.filter(blog=blog)
     context = {
-        "blog" : blog
+        "blog" : blog,
+        "feedbacks" : feedbacks,
     }
     return render(request, "blog/blog.html", context)
 
@@ -49,6 +51,26 @@ def add_blogs(request):
     # return redirect("all_blogs")
     return render(request, "blog/add_blogs.html", {'form':form})
     
-    
+def add_feedback(request):
+    if request.method == "POST":
+        user = request.user
+        blog_id = request.POST.get("blog_id")
+        blog = Blog.objects.get(id=blog_id)
+        rating = request.POST.get("rating")
+        comment = request.POST.get("comment")
+        feedback = None
+        try:
+            feedback = Comment.objects.get(user=user, blog=blog)
+        except:
+            print("Feedback not available")
+        
+        if feedback is None:
+            feedback = Comment()
+            feedback.user = user
+            feedback.blog = blog
+        feedback.rating = rating
+        feedback.comment = comment
+        feedback.save()
+        return redirect('blog_details')    
 
 
