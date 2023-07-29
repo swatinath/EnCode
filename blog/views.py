@@ -1,15 +1,27 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from blog.forms import BlogForm
 from blog.models import Blog, Category, Comment
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 # Create your views here.
 
 def all_blogs(request):
     blogs = Blog.objects.all()
+    paginator = Paginator(blogs, 5)  # 18 books in each page
+    page_number = request.GET.get("page")
+    try:
+        page_obj = paginator.get_page(page_number)
+    except PageNotAnInteger:
+            # If page is not an integer deliver the first page
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range deliver last page of results
+        page_obj = paginator.page(paginator.num_pages)
     categories = Category.objects.all().order_by('category')
     #print(books.query)
     context = {
         "blogs" : blogs,
         "categories" : categories,
+        "page_obj" : page_obj,
     }
     return render(request, "blog/blogs.html", context)
 
