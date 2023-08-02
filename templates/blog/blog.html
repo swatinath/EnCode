@@ -9,8 +9,8 @@
     {% if blog %}
         <div class="row">
             <div class="col-md-10 p-2" style="justify: center">
-                <img src="{{blog.image.url}}" class="w-100">
-                <h4 class="display-4">{{blog.title}}</h4>
+                <img src="{{blog.image.url}}" class="w-50 d-block ms-auto">
+                <h4 class="display-4 text-align-cneter">{{blog.title}}</h4>
                 <p class="lead" style="text-align: justify">{{blog.description|safe}}</p>
                 <p><i class="fa-solid fa-blog"></i> {{blog.category}}</p>
                 <p>By: {{blog.author}}</p>
@@ -35,7 +35,7 @@
             {% endfor %}  
         {% endif %}
         {% if user.is_authenticated %}
-        <a href="" class="btn btn-sm btn-outline-primary rounded-0" 
+        <a href="" class="btn btn-sm btn-outline-primary rounded-0 my-3" 
         data-bs-toggle="modal" data-bs-target="#feedbackModal" data-blog-id="{{blog.id}}"
         data-blog-title="{{blog.title}}"
         onclick="setBlogDetails(event)">Add Feedback</a>

@@ -83,6 +83,10 @@ def add_feedback(request):
         feedback.rating = rating
         feedback.comment = comment
         feedback.save()
-        return redirect('blog_details')    
+        context = {
+            'blog' : blog,
+            'feedback' : feedback,
+        }
+        return render(request, "blog/blog.html",context)    
 
 
