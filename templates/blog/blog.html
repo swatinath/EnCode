@@ -8,9 +8,12 @@
 <div class="container">
     {% if blog %}
         <div class="row">
-            <div class="col-md-10 p-2" style="justify: center">
-                <img src="{{blog.image.url}}" class="w-50 d-block ms-auto">
-                <h4 class="display-4 text-align-cneter">{{blog.title}}</h4>
+            <div class="col-md-10 p-2">
+                <div class="text-center">
+                    <img src="{{blog.image.url}}" class="w-100">
+                    <h4 class="display-4 text-align-cneter py-2">{{blog.title}}</h4>
+                    <h5 class="px-2">{{blog.author}}<span class="px-2">.</span><span class="text-secondary">{{blog.created_at}}</span></h5>
+                </div>   
                 <p class="lead" style="text-align: justify">{{blog.description|safe}}</p>
                 <p><i class="fa-solid fa-blog"></i> {{blog.category}}</p>
                 <p>By: {{blog.author}}</p>

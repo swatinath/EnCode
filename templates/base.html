@@ -22,9 +22,9 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-              <li>
+              <li id="navbar-search-autocomplete">
                 <form class="d-flex" role="search">
-                  <input class="form-control me-2 bg-primary" type="search" placeholder="Search" aria-label="Search">
+                  <input class="form-control me-2 bg-primary" type="search" placeholder="Search" aria-label="Search" id="form1" class="form-control">
                   <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>            
               </li>
@@ -99,6 +99,8 @@
       <p class="text-center text-secondary"> &copy; 2023 EnCode. All Rights Reserved</p>
     </footer>
     <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
-    {% block extrajs %}{% endblock extrajs %}
+{% block extrajs %}
+    
+{% endblock extrajs %}
 </body>
 </html>
