@@ -19,9 +19,8 @@ def all_blogs(request):
     categories = Category.objects.all().order_by('category')
     #print(books.query)
     context = {
-        "blogs" : blogs,
+        "blogs" : page_obj,
         "categories" : categories,
-        "page_obj" : page_obj,
     }
     return render(request, "blog/blogs.html", context)
 

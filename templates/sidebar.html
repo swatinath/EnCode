@@ -1,18 +1,20 @@
 <button class="btn btn-outline-dark d-block d-md-none" onclick="toggle()">
     <i class="fa-solid fa-layer-group"></i>
 </button>
-<div id="sidebar" class="h-100 bg-light d-none d-md-block">
-    <ul class="list-unstyled">
-        <li class="border-bottom border-secondary p-2">
-            <a href="{% url 'all_blogs' %}" class="text-decoration-none">All Blogs</a>
-        </li>
-        {% for c in categories %}
-            <li class="border-bottom border-secondary p-2">
-                <a href="{% url 'blog_category' c.id %}" class="text-decoration-none">{{c.category}}</a>
+<div class="container bg-light">
+    <div id="sidebar" class="h-100 bg-light d-none d-md-block">
+        <ul class="list-unstyled">
+            <li class="p-2">
+                <a href="{% url 'all_blogs' %}" class="text-decoration-none">All Blogs</a>
             </li>
-        {% endfor %}
-        
-    </ul>
+            {% for c in categories %}
+                <li class="ms-3 p-2">
+                    <a href="{% url 'blog_category' c.id %}" class="text-decoration-none">{{c.category}}</a>
+                </li>
+            {% endfor %}
+            
+        </ul>
+    </div>
 </div>
 
 {% block extrajs %}

@@ -13,7 +13,7 @@
         <div class="container my-5">
             {%if blogs%}
             <div class="row">
-                {% for blog in page_obj %}
+                {% for blog in blogs %}
                 <div class="col-sm-4">
                     <div class="card border-0 m-1 p-4">
                         <img src="{{blog.image.url}}" class="card-img-top img-fluid border-bottom" style="height: 200px;">
@@ -32,14 +32,14 @@
             <h3 class="text center my-3">No blogs available</h3>
             {% endif %}
             <div class="mt-5">
-                {% if page_obj.has_other_pages %}
+                {% if blogs.has_other_pages %}
                 <nav aria-label="Page navigation conatiner"></nav>
                 <ul class="pagination justify-content-center">
-                    {% if page_obj.has_previous %}
-                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                    {% if blogs.has_previous %}
+                    <li><a href="?page={{ blogs.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
                     {% endif %}
-                    {% if page_obj.has_next %}
-                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+                    {% if blogs.has_next %}
+                    <li><a href="?page={{ blogs.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
                 {% endif %}
                 </ul>
                 </nav>
