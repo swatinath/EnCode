@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
+    <!-- Include the external JavaScript file -->
+    <script src="{% static 'js/extra.js' %}"></script>
 </head>
 <body>
 
   <!--Nav Bar-->
-    <nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
+    <nav class="navbar bg-primary-subtle navbar-expand-lg" data-bs-theme="dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <h3>EnCode</h3>
@@ -26,9 +27,12 @@
             <ul class="navbar-nav ms-auto">
               <li id="navbar-search-autocomplete">
                 <form class="d-flex" role="search">
-                  <input class="form-control me-2 bg-primary" type="search" placeholder="Search" aria-label="Search" id="form1" class="form-control">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="form1" class="form-control">
                   <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>            
+              </li>
+              <li class="nav-item">
+                <button class="btn" type="submit"><i class="fa-solid fa-moon fa-xl" id="dark" onclick="ToggleDarkMode()"></i></button>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
@@ -65,45 +69,54 @@
     {% block content %}
 
     {% endblock content %}
+<!--Footer-->
 
-    <footer class="bg-light py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 text-center"><p class="text-primary">Company</p>
-            <p>About Us <br> Blog <br> Career <br> Contact Us</p>
-          </div>
-          <div class="col-md-4 text-center"><p class="text-primary">Policies</p>
-            <p>Privacy Policies <br>Terms of Use <br>Secure Posting <br>Copyright Policies</p>
-          </div>
-          <div class="col-md-4 text-center"><p class="text-primary">Help</p>
-          <p>Content <br>Management <br>Security <br> FAQ</p>
-          </div>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 text-center"><p class="text-primary">Company</p>
+          <p>About Us <br> Blog <br> Career <br> Contact Us</p>
+        </div>
+        <div class="col-md-4 text-center"><p class="text-primary">Policies</p>
+          <p>Privacy Policies <br>Terms of Use <br>Secure Posting <br>Copyright Policies</p>
+        </div>
+        <div class="col-md-4 text-center"><p class="text-primary">Help</p>
+        <p>Content <br>Management <br>Security <br> FAQ</p>
         </div>
       </div>
-      
-      <ul class="list-unstyled list-inline text-center">
-        <li class="list-inline-item">
-          <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/facebook.png" alt="Facebook" width="32px" height="32px">
-        </li>
-        <li class="list-inline-item">
-          <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/linkedin.png" alt="Linkedin" width="32px" height="32px">
-        </li>
-        <li class="list-inline-item">
-          <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/youtube.png" alt="Youtube" width="32px" height="32px">
-        </li>
-        <li class="list-inline-item">
-          <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/pinterest.png" alt="Pinterest" width="32px" height="32px">
-        </li>
-        <li class="list-inline-item">
-          <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/instagram.png" alt="Instagram" width="32px" height="32px">
-        </li>
-      </ul>
-      <p class="text-center text-secondary"> &copy; 2023 EnCode. All Rights Reserved</p>
-    </footer>
+    </div>
+    
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/facebook.png" alt="Facebook" width="32px" height="32px">
+      </li>
+      <li class="list-inline-item">
+        <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/linkedin.png" alt="Linkedin" width="32px" height="32px">
+      </li>
+      <li class="list-inline-item">
+        <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/youtube.png" alt="Youtube" width="32px" height="32px">
+      </li>
+      <li class="list-inline-item">
+        <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/pinterest.png" alt="Pinterest" width="32px" height="32px">
+      </li>
+      <li class="list-inline-item">
+        <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/instagram.png" alt="Instagram" width="32px" height="32px">
+      </li>
+    </ul>
+    <p class="text-center text-secondary"> &copy; 2023 EnCode. All Rights Reserved</p>
+  </footer>
+
+    
     <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+
+
+<script>
+var dark_mode_active = false;
+
+</script>
+
 {% block extrajs %}
 
-<script src="/static/js/extra.js"></script>
 {% endblock extrajs %}
 </body>
 </html>

@@ -6,7 +6,7 @@
 {% endblock title %}
 
 {% block content %}
-<div class="text-center shadow-sm p-3 mb-3 rounded">
+<div class="text-center shadow-sm p-3 mb-3 rounded bg-primary-subtle" id="main-heading">
     <h3 class="text-center pt-3">Welcome to EnCode </h3>
     <p class="text-center">Ideate. Write. Learn</p>
 </div>
@@ -23,25 +23,7 @@
         </div>
     </div>
 </div>
-<section class="bg-light py-5">
-    <div class="container mt-3 mx-auto w-50">
-        <div class="row">
-            <h5 class="border border-2 border-dark border-opacity-25 mx-7 p-2 py-3 text-center">How to blog?</h5>
-            <ol class="lh-lg">
-                <li>Choose your target audience.</li>
-                <li>Brainstorm content ideas frequently based on your market segment.</li>
-                <li>Research and review a content management system (CMS).</li>
-                <li>Create a blog strategy and editorial calendar.</li>
-                <li>Pay attention to article structure.</li>
-                <li>Become an expert in marketing and promoting your blog.</li>
-                <li>Learn about SEO.</li>
-                <li>Use a variety of blog post styles.</li>
-                <li>Repurpose old content.</li>
-                <li>Perform a competitive analysis.</li>
-            </ol>
-        </div>
-    </div>
-</section>
+
 {% comment %} Newsletter {% endcomment %}
 <section class="bg-dark text-white py-5">
     <div class="container">
@@ -56,18 +38,23 @@
             </div>
             <div class="col-md-6 p-2 py-4">
                 <div class="form-check py-2">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" value="" id="termsCheckbox">
+                    <label class="form-check-label" for="termsCheckbox">
                       I agree to the EnCode Terms of Use
                     </label>
                   </div>
                   <div class="form-check py-2">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" value="" id="privacyCheckbox">
+                    <label class="form-check-label" for="privacyCheckbox">
                       I acknowledge that I have read EnCode's Privacy Policy
                     </label>
                   </div>
-                <button class="btn btn-light py-3 px-5 rounded-3 mt-4 fw-semibold" id="result" onclick="Subscribe()">Subscribe Now</button>
+                  {% if user.is_authenticated %}
+                  <button class="btn btn-light py-3 px-5 rounded-3 mt-4 fw-semibold" id="result" onclick="Subscribe()">Subscribe Now</button>
+                  {% else %}
+                  <a href="{% url 'signup' %}"><button class="btn btn-light py-3 px-5 rounded-3 mt-4 fw-semibold">Sign up to subscribe</button></a>
+                  {% endif %}
+                
             </div>
         </div>
 
@@ -77,7 +64,19 @@
 {% block extrajs %}
 <script>
     function Subscribe() {
-        document.getElementById("result").innerHTML = "Thank you for subscribing! "
+        var termsCheckbox = document.getElementById("termsCheckbox");
+        var privacyCheckbox = document.getElementById("privacyCheckbox");
+
+        // Check if both checkboxes are checked
+        if (termsCheckbox.checked && privacyCheckbox.checked) {
+            // Both checkboxes are checked, so you can proceed with subscribing
+            document.getElementById("result").innerHTML = "Thank you for subscribing! "
+            subscribeButton.disabled = true; // Disable the button
+        } else {
+            // Display an error message if not both checkboxes are checked
+            alert("Please check both checkboxes to subscribe.");
+        }
+        
     }
 </script>
 

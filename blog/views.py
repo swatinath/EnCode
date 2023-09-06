@@ -6,7 +6,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 def all_blogs(request):
     blogs = Blog.objects.all()
-    paginator = Paginator(blogs, 5)  # 18 books in each page
+    paginator = Paginator(blogs, 5)  # 5 blogs in each page
     page_number = request.GET.get("page")
     try:
         page_obj = paginator.get_page(page_number)
