@@ -1,7 +1,7 @@
 # EnCode
 Objective – create, post and share blogs.
 
-The workflow of the project is as below:
+The architecture of the project is as below:
 1.	User – i. Admin
            ii. Viewer
 2.	Functionalities –
